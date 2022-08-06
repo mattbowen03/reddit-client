@@ -34,7 +34,7 @@ function Comments() {
         }}>
         Go Back
       </button>
-      <div>
+      <div className='comments'>
         {commentsList.map((item, idx) => {
           return (
             <div className='comment-wrapper' key={idx}>

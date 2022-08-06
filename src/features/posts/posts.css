@@ -2,6 +2,22 @@
   display: flex;
   background-color: white;
   margin: 10px 0;
-  padding: 10px;
   width: 700px;
+  border-radius: 0 4px 4px 0 ;
+}
+
+.post-content {
+  display: inline-block;
+  word-break: break-word;
+}
+
+.post-left {
+  background-color: lightgray;
+  width: 50px;
+  border-radius: 4px 0 0 4px;
+}
+
+.post-right {
+  padding: 20px;
+  width: 650px;
 }

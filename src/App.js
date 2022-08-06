@@ -3,8 +3,6 @@ import logo from "./logo.svg";
 import { Counter } from "./features/counter/Counter";
 import "./App.css";
 import SearchBar from "./features/searchBar/SearchBar";
-import MainContentLeftHeading from "./features/mainContentLeftHeading/MainContentLeftHeading";
-import MainContentRightHeading from "./features/mainContentRightHeading/MainContentRightHeading";
 import Posts from "./features/posts/Posts";
 import SubRedditSelections from "./features/subRedditSelections/SubRedditSelections";
 
@@ -12,6 +10,7 @@ import { fetchPostsAsync } from "./features/posts/postsSlice";
 
 import { useDispatch } from "react-redux";
 import Comments from "./features/comments/Comments";
+import { subredditList } from "./modules/subredditList";
 
 function App() {
   //allows us to dispatchActions
@@ -19,15 +18,15 @@ function App() {
 
   //runs on page load
   useEffect(() => {
-    //dispatches async thunk from musicSlice.js
-    dispatch(fetchPostsAsync("https://www.reddit.com/r/Music/.json"));
+    //dispatches async thunk from postsSlice.js
+    dispatch(fetchPostsAsync(subredditList[0].url));
   });
 
   return (
     <div className='App'>
       <header className='app-header'>
         <nav>
-          <div className='nav-left'>LOGO!</div>
+          <div className='nav-left'>Ryan's Reddit's</div>
           <div className='nav-center'>
             <SearchBar />
           </div>
@@ -38,12 +37,10 @@ function App() {
       <section className='main-section'>
         <div className='main-content-wrapper'>
           <div className='main-content-left'>
-            <MainContentLeftHeading />
             <Comments />
             <Posts />
           </div>
           <div className='main-content-right'>
-            <MainContentRightHeading />
             <SubRedditSelections />
           </div>
         </div>

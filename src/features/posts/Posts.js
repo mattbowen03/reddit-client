@@ -28,7 +28,7 @@ function Posts() {
 
   return (
     <div className='posts-wrapper'>
-      <h2>{postsList[0].data.subreddit_name_prefixed}</h2>
+      {/* <h2>{postsList[0].data.subreddit_name_prefixed}</h2> */}
       {postsList.map((item, idx) => {
         let myDate = new Date(item.data.created * 1000);
 

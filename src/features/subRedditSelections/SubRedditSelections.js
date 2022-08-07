@@ -18,6 +18,7 @@ function SubRedditSelections() {
       {subredditList.map((subreddit) => {
         return (
           <button
+            className='subreddit-selection-btn'
             onClick={() => {
               dispatch(fetchPostsAsync(subreddit.url));
               if (visibility === "SHOW") {

@@ -28,11 +28,7 @@ nav {
   align-items: center;
   font-size: calc(10px + 2vmin);
   background-color: #FFF;
-  box-shadow: 0px 2px 2px 1px rgba(0, 0, 0, 0.2);
-}
-
-.nav-center {
-  background-color: pink;
+  box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, .05);
 }
 
 .nav-left,
@@ -49,6 +45,10 @@ nav {
   align-items: flex-start;
 }
 
+.logo {
+  color: #75BF7A;
+}
+
 .nav-right {
   align-items: flex-end;
 }
@@ -60,7 +60,8 @@ nav {
 
 /* Main Section */
 .main-section {
-  background-color: aqua;
+  background-color: #D9D9D9;
+  min-height: 100vh;
 }
 
 .main-content-wrapper {
@@ -80,7 +81,6 @@ nav {
 
 .main-content-right {
   width: 250px;
-  background-color: orange;
   margin-left: 10px;
 }
 

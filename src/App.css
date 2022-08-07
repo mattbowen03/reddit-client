@@ -13,6 +13,49 @@
   }
 }
 
+/* Base Styles */
+h1 {
+  font-size: 26px;
+  text-align: left;
+  color: #262626;
+}
+
+h2 {
+  font-size: 22px;
+  text-align: left;
+  color: #262626;
+}
+
+h3 {
+  font-size: 18px;
+  text-align: left;
+  color: #262626;
+}
+
+p {
+  font-size: 16px;
+  text-align: left;
+  color: #262626;
+}
+
+button {
+  font-size: 16px;
+  font-weight: 500;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, .05);
+  border: none;
+  background-color: #75BF7A;
+  height: 50px;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  color: #262626;
+}
+
+button:hover {
+  background-color: rgba(117, 191, 122, .8);
+  transition: background-color .3s ease;
+}
+
 /* Nav Bar */
 .app-header {
   width: 100%;
@@ -47,6 +90,7 @@ nav {
 
 .logo {
   color: #75BF7A;
+  font-size: 42px;
 }
 
 .nav-right {

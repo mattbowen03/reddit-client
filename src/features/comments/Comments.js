@@ -27,18 +27,29 @@ function Comments() {
 
   return (
     <div>
-      <button
+      {/* <button
         onClick={() => {
           dispatch(toggleCommentsVisibility());
           dispatch(togglePostsVisibility());
         }}>
         Go Back
-      </button>
+      </button> */}
       <div className='comments'>
         {commentsList.map((item, idx) => {
           return (
             <div className='comment-wrapper' key={idx}>
-              {item.data.body}
+              <div className='comment-left'>
+                <div className='upvote'>
+                  <img src={upArrow} className='upArrow' alt='up-arrow' />
+                </div>
+                <div className='vote-number'>{item.data.score}</div>
+                <img src={dnArrow} className='dnArrow' alt='down-arrow' />
+                <div className='downVote'></div>
+              </div>
+              <div className='comment-right'>
+                <p>{item.data.body}</p>
+                <p>{item.data.author}</p>
+              </div>
             </div>
           );
         })}

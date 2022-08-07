@@ -38,7 +38,8 @@ export const postsSlice = createSlice({
       state.status = "idle";
     },
     [fetchPostsAsync.rejected]: (state) => {
-      state.value = "failed";
+      state.value = "rejected";
+      state.status = "rejected";
     },
   },
 });

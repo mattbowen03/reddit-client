@@ -1,9 +1,30 @@
 .comment-wrapper {
+  display: flex;
   background-color: #FFF;
-  padding: 10px;
   width: 100%;
-  margin: 10px 0px;
+  margin: 20px 0px;
   border-radius: 4px;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, .05);
-  
+}
+
+.comment-left {
+  background-color: #84D98A;
+  width: 50px;
+  border-radius: 4px 0 0 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 90%
+}
+
+.comment-right {
+  padding: 20px;
+  width: 650px;
+}
+
+.upArrow,
+.dnArrow {
+  height: 30px;
+  width: 30px;
 }

@@ -14,11 +14,12 @@ function SubRedditSelections() {
 
   return (
     <div className='selections-wrapper'>
-      <h2>Featured SubReddits</h2>
-      {subredditList.map((subreddit) => {
+      <h3>Featured SubReddits</h3>
+      {subredditList.map((subreddit, idx) => {
         return (
           <button
-            className='subreddit-selection-btn'
+            className='subredditSelectionButton'
+            key={idx}
             onClick={() => {
               dispatch(fetchPostsAsync(subreddit.url));
               if (visibility === "SHOW") {

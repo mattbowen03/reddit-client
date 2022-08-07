@@ -26,7 +26,7 @@ function App() {
     <div className='App'>
       <header className='app-header'>
         <nav>
-          <h1 className='nav-left logo'>Ryan's Reddit's</h1>
+          <h1 className='nav-left logo'>Ryan's Reddits.</h1>
           <div className='nav-center'>
             <SearchBar />
           </div>

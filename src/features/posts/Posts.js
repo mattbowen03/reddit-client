@@ -47,7 +47,7 @@ function Posts() {
               <h3>
                 Posted by {item.data.author} on {myDate.toLocaleString()}
               </h3>
-              <div className='post-content'>{item.data.selftext}</div>
+              <p className='post-content'>{item.data.selftext}</p>
               <button
                 onClick={() => {
                   dispatch(fetchCommentsAsync(item.data.url + ".json"));

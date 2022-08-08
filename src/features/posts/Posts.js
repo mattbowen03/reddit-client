@@ -12,10 +12,12 @@ import {
 } from "../comments/commentsSlice";
 import upArrow from "../../icons/bx-up-arrow-alt.svg";
 import dnArrow from "../../icons/bx-down-arrow-alt.svg";
+import { selectQueryInput } from "../searchBar/searchBarSlice";
 
 function Posts() {
   const postsList = useSelector(selectPosts);
   const visibility = useSelector(selectPostsVisibility);
+  const queryInput = useSelector(selectQueryInput);
   const dispatch = useDispatch();
 
   if (visibility === "HIDDEN") {
@@ -24,6 +26,50 @@ function Posts() {
 
   if (postsList === "Loading") {
     return <div>Loading...</div>;
+  }
+
+  if (queryInput) {
+    return (
+      <div>
+        {postsList.map((item, idx) => {
+          let myDate = new Date(item.data.created * 1000);
+          if (
+            item.data.title.includes(queryInput) ||
+            item.data.selftext.includes(queryInput) ||
+            item.data.author.includes(queryInput)
+          ) {
+            return (
+              <div className='post' key={idx}>
+                <div className='post-left'>
+                  <div className='upvote'>
+                    <img src={upArrow} className='upArrow' alt='up-arrow' />
+                  </div>
+                  <div className='vote-number'>{item.data.score}</div>
+                  <img src={dnArrow} className='dnArrow' alt='down-arrow' />
+                  <div className='downVote'></div>
+                </div>
+                <div className='post-right'>
+                  <h2>{item.data.title}</h2>
+                  <h3>
+                    Posted by {item.data.author} on {myDate.toLocaleString()}
+                  </h3>
+                  <p className='post-content'>{item.data.selftext}</p>
+                  <button
+                    onClick={() => {
+                      dispatch(fetchCommentsAsync(item.data.url + ".json"));
+                      dispatch(toggleCommentsVisibility());
+                      dispatch(togglePostsVisibility());
+                    }}>
+                    See Comments
+                  </button>
+                </div>
+              </div>
+            );
+          }
+          return null;
+        })}
+      </div>
+    );
   }
 
   return (

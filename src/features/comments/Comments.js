@@ -32,9 +32,19 @@ function Comments() {
     return (
       <div className='post-comments-container'>
         <div className='original-post'>
-          <h2>{originalPost[0]}</h2>
-          <h3>{"Posted by: " + originalPost[1] + "on " + originalPost[2]}</h3>
-          <p>{originalPost[3]}</p>
+          <div className='comment-left'>
+            <div className='upvote'>
+              <img src={upArrow} className='upArrow' alt='up-arrow' />
+            </div>
+            <div className='vote-number'>{originalPost[4]}</div>
+            <img src={dnArrow} className='dnArrow' alt='down-arrow' />
+            <div className='downVote'></div>
+          </div>
+          <div className='comment-right'>
+            <h3>{"Posted by: " + originalPost[1] + "on " + originalPost[2]}</h3>
+            <h2>{originalPost[0]}</h2>
+            <p>{originalPost[3]}</p>
+          </div>
         </div>
         <div className='comments'>
           {commentsList.map((item, idx) => {
@@ -68,14 +78,22 @@ function Comments() {
 
   return (
     <div className='post-comments-container'>
-      <div className='original-post'>{originalPost}</div>
-      {/* <button
-        onClick={() => {
-          dispatch(toggleCommentsVisibility());
-          dispatch(togglePostsVisibility());
-        }}>
-        Go Back
-      </button> */}
+      <div className='original-post'>
+        <div className='comment-left'>
+          <div className='upvote'>
+            <img src={upArrow} className='upArrow' alt='up-arrow' />
+          </div>
+          <div className='vote-number'>{originalPost[4]}</div>
+          <img src={dnArrow} className='dnArrow' alt='down-arrow' />
+          <div className='downVote'></div>
+        </div>
+        <div className='comment-right'>
+          <h3>{"Posted by: " + originalPost[1] + "on " + originalPost[2]}</h3>
+          <h2>{originalPost[0]}</h2>
+          <p>{originalPost[3]}</p>
+        </div>
+      </div>
+
       <div className='comments'>
         {commentsList.map((item, idx) => {
           return (

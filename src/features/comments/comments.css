@@ -1,3 +1,8 @@
+.comments {
+  width: 97%;
+  margin-left: 3%;
+}
+
 .comment-wrapper {
   display: flex;
   background-color: #FFF;
@@ -20,7 +25,7 @@
 
 .comment-right {
   padding: 20px;
-  width: 650px;
+  width: 100%;
 }
 
 .upArrow,
@@ -30,6 +35,20 @@
 }
 
 .post-comments-container {
-  background-color: red;
   padding: 5px;
+  margin-top: 20px;
+  background-color: rgba(0, 0, 0, .1);
+  border-radius: 4px;
+  width: 100%;
+}
+
+.comment-wrapper p {
+  font-size: 14px;
+}
+
+.original-post {
+  background-color: #FFF;
+  border-radius: 4px;
+  display: flex;
+  width: 100%;
 }

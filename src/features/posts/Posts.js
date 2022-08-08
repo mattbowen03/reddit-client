@@ -50,10 +50,10 @@ function Posts() {
                   <div className='downVote'></div>
                 </div>
                 <div className='post-right'>
-                  <h2>{item.data.title}</h2>
                   <h3>
                     Posted by {item.data.author} on {myDate.toLocaleString()}
                   </h3>
+                  <h2>{item.data.title}</h2>
                   <p className='post-content'>{item.data.selftext}</p>
                   <button
                     onClick={() => {
@@ -91,10 +91,10 @@ function Posts() {
               <div className='downVote'></div>
             </div>
             <div className='post-right'>
-              <h2>{item.data.title}</h2>
               <h3>
                 Posted by {item.data.author} on {myDate.toLocaleString()}
               </h3>
+              <h2>{item.data.title}</h2>
               <p className='post-content'>{item.data.selftext}</p>
               <button
                 key={idx}
@@ -108,6 +108,7 @@ function Posts() {
                       item.data.author,
                       myDate.toLocaleString(),
                       item.data.selftext,
+                      item.data.score,
                     ])
                   );
                 }}>

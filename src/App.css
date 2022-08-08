@@ -91,6 +91,7 @@ nav {
 .logo {
   color: #75BF7A;
   font-size: 42px;
+  cursor: pointer;
 }
 
 .nav-right {

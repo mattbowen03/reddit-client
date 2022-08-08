@@ -28,3 +28,8 @@
   height: 30px;
   width: 30px;
 }
+
+.post-comments-container {
+  background-color: red;
+  padding: 5px;
+}

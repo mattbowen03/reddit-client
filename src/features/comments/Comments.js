@@ -1,24 +1,22 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import {
   selectComments,
   selectCommentsStatus,
   selectCommentsVisibility,
 } from "./commentsSlice";
-import { togglePostsVisibility } from "../posts/postsSlice";
-import { toggleCommentsVisibility } from "../comments/commentsSlice";
 import "./comments.css";
 import upArrow from "../../icons/bx-up-arrow-alt.svg";
 import dnArrow from "../../icons/bx-down-arrow-alt.svg";
 import { selectQueryInput } from "../searchBar/searchBarSlice";
+import { selectedPost } from "../posts/postsSlice";
 
 function Comments() {
   const commentsList = useSelector(selectComments);
   const status = useSelector(selectCommentsStatus);
   const visibility = useSelector(selectCommentsVisibility);
   const queryInput = useSelector(selectQueryInput);
-
-  const dispatch = useDispatch();
+  const originalPost = useSelector(selectedPost);
 
   if (visibility === "HIDDEN") {
     return;
@@ -28,11 +26,16 @@ function Comments() {
     return <div>Loading...</div>;
   }
 
-  console.log(commentsList);
+  console.log(originalPost);
 
   if (queryInput) {
     return (
-      <div>
+      <div className='post-comments-container'>
+        <div className='original-post'>
+          <h2>{originalPost[0]}</h2>
+          <h3>{"Posted by: " + originalPost[1] + "on " + originalPost[2]}</h3>
+          <p>{originalPost[3]}</p>
+        </div>
         <div className='comments'>
           {commentsList.map((item, idx) => {
             if (
@@ -56,6 +59,7 @@ function Comments() {
                 </div>
               );
             }
+            return null;
           })}
         </div>
       </div>
@@ -63,7 +67,8 @@ function Comments() {
   }
 
   return (
-    <div>
+    <div className='post-comments-container'>
+      <div className='original-post'>{originalPost}</div>
       {/* <button
         onClick={() => {
           dispatch(toggleCommentsVisibility());

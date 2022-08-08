@@ -5,6 +5,7 @@ import {
   selectPosts,
   selectPostsVisibility,
   togglePostsVisibility,
+  setSelectedPost,
 } from "./postsSlice";
 import {
   fetchCommentsAsync,
@@ -59,6 +60,7 @@ function Posts() {
                       dispatch(fetchCommentsAsync(item.data.url + ".json"));
                       dispatch(toggleCommentsVisibility());
                       dispatch(togglePostsVisibility());
+                      dispatch(setSelectedPost(item.data.title));
                     }}>
                     See Comments
                   </button>
@@ -95,10 +97,19 @@ function Posts() {
               </h3>
               <p className='post-content'>{item.data.selftext}</p>
               <button
+                key={idx}
                 onClick={() => {
                   dispatch(fetchCommentsAsync(item.data.url + ".json"));
                   dispatch(toggleCommentsVisibility());
                   dispatch(togglePostsVisibility());
+                  dispatch(
+                    setSelectedPost([
+                      item.data.title,
+                      item.data.author,
+                      myDate.toLocaleString(),
+                      item.data.selftext,
+                    ])
+                  );
                 }}>
                 See Comments
               </button>

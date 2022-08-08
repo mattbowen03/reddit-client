@@ -5,6 +5,7 @@ const initialState = {
   value: "Loading",
   status: "idle",
   visibility: "SHOW",
+  selectedPost: "none",
 };
 
 export const fetchPostsAsync = createAsyncThunk(
@@ -21,6 +22,10 @@ export const postsSlice = createSlice({
   reducers: {
     seePosts: (state, action) => {
       state.value = action.payload;
+    },
+    setSelectedPost: (state, action) => {
+      console.log("stateupdate", action.payload);
+      state.selectedPost = action.payload;
     },
     togglePostsVisibility: (state, action) => {
       state.visibility === "HIDDEN"
@@ -51,7 +56,10 @@ export const selectPostsStatus = (state) => state.posts.status;
 
 export const selectPostsVisibility = (state) => state.posts.visibility;
 
+export const selectedPost = (state) => state.posts.selectedPost;
+
 //actions
-export const { seePosts, togglePostsVisibility } = postsSlice.actions;
+export const { seePosts, togglePostsVisibility, setSelectedPost } =
+  postsSlice.actions;
 
 export default postsSlice.reducer;

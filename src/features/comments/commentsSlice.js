@@ -34,7 +34,6 @@ export const commentsSlice = createSlice({
       state.status = "pending";
     },
     [fetchCommentsAsync.fulfilled]: (state, action) => {
-      console.log(action);
       state.value = action.payload;
       state.status = "fulfilled";
     },

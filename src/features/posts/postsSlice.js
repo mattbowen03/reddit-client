@@ -6,6 +6,7 @@ const initialState = {
   status: "idle",
   visibility: "SHOW",
   selectedPost: "none",
+  currentSubreddit: "Loading",
 };
 
 export const fetchPostsAsync = createAsyncThunk(
@@ -24,7 +25,6 @@ export const postsSlice = createSlice({
       state.value = action.payload;
     },
     setSelectedPost: (state, action) => {
-      console.log("stateupdate", action.payload);
       state.selectedPost = action.payload;
     },
     togglePostsVisibility: (state, action) => {
@@ -39,8 +39,10 @@ export const postsSlice = createSlice({
       state.status = "Pending";
     },
     [fetchPostsAsync.fulfilled]: (state, action) => {
+      console.log("yooooo", action.payload);
       state.value = action.payload;
       state.status = "idle";
+      state.currentSubreddit = action.payload[0].data.subreddit;
     },
     [fetchPostsAsync.rejected]: (state) => {
       state.value = "rejected";
@@ -57,6 +59,7 @@ export const selectPostsStatus = (state) => state.posts.status;
 export const selectPostsVisibility = (state) => state.posts.visibility;
 
 export const selectedPost = (state) => state.posts.selectedPost;
+export const selectCurrentSubreddit = (state) => state.posts.currentSubreddit;
 
 //actions
 export const { seePosts, togglePostsVisibility, setSelectedPost } =

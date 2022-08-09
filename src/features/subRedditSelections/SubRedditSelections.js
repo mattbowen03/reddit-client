@@ -1,7 +1,11 @@
 import React from "react";
 import "./subRedditSelections.css";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchPostsAsync, togglePostsVisibility } from "../posts/postsSlice";
+import {
+  fetchPostsAsync,
+  togglePostsVisibility,
+  selectCurrentSubreddit,
+} from "../posts/postsSlice";
 import {
   toggleCommentsVisibility,
   selectCommentsVisibility,
@@ -11,14 +15,22 @@ import { subredditList } from "../../modules/subredditList";
 function SubRedditSelections() {
   const dispatch = useDispatch();
   const visibility = useSelector(selectCommentsVisibility);
+  const currentSubreddit = "r/" + useSelector(selectCurrentSubreddit);
+
+  console.log(currentSubreddit);
+  console.log(subredditList[0].name);
 
   return (
     <div className='selections-wrapper'>
-      <h3>Featured SubReddits</h3>
+      <h3>My subReddits</h3>
       {subredditList.map((subreddit, idx) => {
         return (
           <button
-            className='subredditSelectionButton'
+            className={
+              currentSubreddit === subreddit.name
+                ? "subredditSelectionButton currentSubreddit"
+                : "subredditSelectionButton"
+            }
             key={idx}
             onClick={() => {
               dispatch(fetchPostsAsync(subreddit.url));

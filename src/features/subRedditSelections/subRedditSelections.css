@@ -23,6 +23,10 @@
   border-radius: 0;
 }
 
+.currentSubreddit {
+  background-color: #84D98A;
+}
+
 .subredditSelectionButton:hover {
   background-color: #84D98A;
   transition: background-color .3s ease;

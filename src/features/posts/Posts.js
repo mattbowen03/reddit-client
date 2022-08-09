@@ -67,7 +67,15 @@ function Posts() {
                       dispatch(fetchCommentsAsync(item.data.url + ".json"));
                       dispatch(toggleCommentsVisibility());
                       dispatch(togglePostsVisibility());
-                      dispatch(setSelectedPost(item.data.title));
+                      dispatch(
+                        setSelectedPost([
+                          item.data.title,
+                          item.data.author,
+                          myDate.toLocaleString(),
+                          item.data.selftext,
+                          item.data.score,
+                        ])
+                      );
                     }}>
                     See Comments
                   </button>

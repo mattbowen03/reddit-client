@@ -14,6 +14,7 @@ import {
 import upArrow from "../../icons/bx-up-arrow-alt.svg";
 import dnArrow from "../../icons/bx-down-arrow-alt.svg";
 import { selectQueryInput } from "../searchBar/searchBarSlice";
+import ReactMarkdown from "react-markdown";
 
 function Posts() {
   const postsList = useSelector(selectPosts);
@@ -34,10 +35,13 @@ function Posts() {
       <div>
         {postsList.map((item, idx) => {
           let myDate = new Date(item.data.created * 1000);
+          //during the evaluation the text is set to lowercase
           if (
-            item.data.title.includes(queryInput) ||
-            item.data.selftext.includes(queryInput) ||
-            item.data.author.includes(queryInput)
+            item.data.title.toLowerCase().includes(queryInput.toLowerCase()) ||
+            item.data.selftext
+              .toLowerCase()
+              .includes(queryInput.toLowerCase()) ||
+            item.data.author.toLowerCase().includes(queryInput.toLowerCase())
           ) {
             return (
               <div className='post' key={idx}>
@@ -54,7 +58,9 @@ function Posts() {
                     Posted by {item.data.author} on {myDate.toLocaleString()}
                   </h3>
                   <h2>{item.data.title}</h2>
-                  <p className='post-content'>{item.data.selftext}</p>
+                  <div className='post-content'>
+                    <ReactMarkdown>{item.data.selftext}</ReactMarkdown>
+                  </div>
                   <button
                     onClick={() => {
                       dispatch(fetchCommentsAsync(item.data.url + ".json"));
@@ -95,7 +101,9 @@ function Posts() {
                 Posted by {item.data.author} on {myDate.toLocaleString()}
               </h3>
               <h2>{item.data.title}</h2>
-              <p className='post-content'>{item.data.selftext}</p>
+              <div className='post-content'>
+                <ReactMarkdown>{item.data.selftext}</ReactMarkdown>
+              </div>
               <button
                 key={idx}
                 onClick={() => {

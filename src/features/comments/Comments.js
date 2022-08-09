@@ -10,6 +10,7 @@ import upArrow from "../../icons/bx-up-arrow-alt.svg";
 import dnArrow from "../../icons/bx-down-arrow-alt.svg";
 import { selectQueryInput } from "../searchBar/searchBarSlice";
 import { selectedPost } from "../posts/postsSlice";
+import ReactMarkdown from "react-markdown";
 
 function Comments() {
   const commentsList = useSelector(selectComments);

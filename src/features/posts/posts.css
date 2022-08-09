@@ -29,6 +29,11 @@
   width: 650px;
 }
 
+.post-right img {
+  height: auto;
+  width: 100%;
+}
+
 .upArrow,
 .dnArrow {
   height: 30px;

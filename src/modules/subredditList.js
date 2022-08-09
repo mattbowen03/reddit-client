@@ -15,4 +15,8 @@ export const subredditList = [
     name: "r/daddit",
     url: "https://www.reddit.com/r/daddit/.json",
   },
+  {
+    name: "r/funny",
+    url: "https://www.reddit.com/r/funny/.json",
+  },
 ];

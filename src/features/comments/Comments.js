@@ -27,6 +27,10 @@ function Comments() {
     return <div>Loading...</div>;
   }
 
+  if (status === "failed") {
+    return <div>Failed to load.</div>;
+  }
+
   console.log(originalPost);
 
   if (queryInput) {
@@ -44,7 +48,7 @@ function Comments() {
           <div className='comment-right'>
             <h3>{"Posted by: " + originalPost[1] + "on " + originalPost[2]}</h3>
             <h2>{originalPost[0]}</h2>
-            <p>{originalPost[3]}</p>
+            <ReactMarkdown>{originalPost[3]}</ReactMarkdown>
           </div>
         </div>
         <div className='comments'>
@@ -64,7 +68,7 @@ function Comments() {
                     <div className='downVote'></div>
                   </div>
                   <div className='comment-right'>
-                    <p>{item.data.body}</p>
+                    <ReactMarkdown>{item.data.body}</ReactMarkdown>
                     <p>{item.data.author}</p>
                   </div>
                 </div>
@@ -91,7 +95,7 @@ function Comments() {
         <div className='comment-right'>
           <h3>{"Posted by: " + originalPost[1] + "on " + originalPost[2]}</h3>
           <h2>{originalPost[0]}</h2>
-          <p>{originalPost[3]}</p>
+          <ReactMarkdown>{originalPost[3]}</ReactMarkdown>
         </div>
       </div>
 
@@ -108,7 +112,7 @@ function Comments() {
                 <div className='downVote'></div>
               </div>
               <div className='comment-right'>
-                <p>{item.data.body}</p>
+                <ReactMarkdown>{item.data.body}</ReactMarkdown>
                 <p>{item.data.author}</p>
               </div>
             </div>

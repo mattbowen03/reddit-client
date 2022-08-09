@@ -61,6 +61,7 @@ function Posts() {
                   <div className='post-content'>
                     <ReactMarkdown>{item.data.selftext}</ReactMarkdown>
                   </div>
+                  <img src={item.data.url} alt='' />
                   <button
                     onClick={() => {
                       dispatch(fetchCommentsAsync(item.data.url + ".json"));
@@ -104,10 +105,15 @@ function Posts() {
               <div className='post-content'>
                 <ReactMarkdown>{item.data.selftext}</ReactMarkdown>
               </div>
+              <img src={item.data.url} alt='' />
               <button
                 key={idx}
                 onClick={() => {
-                  dispatch(fetchCommentsAsync(item.data.url + ".json"));
+                  dispatch(
+                    fetchCommentsAsync(
+                      "https://www.reddit.com" + item.data.permalink + ".json"
+                    )
+                  );
                   dispatch(toggleCommentsVisibility());
                   dispatch(togglePostsVisibility());
                   dispatch(

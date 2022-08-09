@@ -39,7 +39,6 @@ export const postsSlice = createSlice({
       state.status = "Pending";
     },
     [fetchPostsAsync.fulfilled]: (state, action) => {
-      console.log("yooooo", action.payload);
       state.value = action.payload;
       state.status = "idle";
       state.currentSubreddit = action.payload[0].data.subreddit;

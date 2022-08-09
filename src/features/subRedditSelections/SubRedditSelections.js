@@ -17,9 +17,6 @@ function SubRedditSelections() {
   const visibility = useSelector(selectCommentsVisibility);
   const currentSubreddit = "r/" + useSelector(selectCurrentSubreddit);
 
-  console.log(currentSubreddit);
-  console.log(subredditList[0].name);
-
   return (
     <div className='selections-wrapper'>
       <h3>My subReddits</h3>

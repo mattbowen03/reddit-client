@@ -31,8 +31,6 @@ function Comments() {
     return <div>Failed to load.</div>;
   }
 
-  console.log(originalPost);
-
   if (queryInput) {
     return (
       <div className='post-comments-container'>

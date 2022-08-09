@@ -30,69 +30,23 @@ function Posts() {
     return <div>Loading...</div>;
   }
 
+  console.log({ postsList });
+
+  let filteredList = postsList;
+
   if (queryInput) {
-    return (
-      <div>
-        {postsList.map((item, idx) => {
-          let myDate = new Date(item.data.created * 1000);
-          //during the evaluation the text is set to lowercase
-          if (
-            item.data.title.toLowerCase().includes(queryInput.toLowerCase()) ||
-            item.data.selftext
-              .toLowerCase()
-              .includes(queryInput.toLowerCase()) ||
-            item.data.author.toLowerCase().includes(queryInput.toLowerCase())
-          ) {
-            return (
-              <div className='post' key={idx}>
-                <div className='post-left'>
-                  <div className='upvote'>
-                    <img src={upArrow} className='upArrow' alt='up-arrow' />
-                  </div>
-                  <div className='vote-number'>{item.data.score}</div>
-                  <img src={dnArrow} className='dnArrow' alt='down-arrow' />
-                  <div className='downVote'></div>
-                </div>
-                <div className='post-right'>
-                  <h3>
-                    Posted by {item.data.author} on {myDate.toLocaleString()}
-                  </h3>
-                  <h2>{item.data.title}</h2>
-                  <div className='post-content'>
-                    <ReactMarkdown>{item.data.selftext}</ReactMarkdown>
-                  </div>
-                  <img src={item.data.url} alt='' />
-                  <button
-                    onClick={() => {
-                      dispatch(fetchCommentsAsync(item.data.url + ".json"));
-                      dispatch(toggleCommentsVisibility());
-                      dispatch(togglePostsVisibility());
-                      dispatch(
-                        setSelectedPost([
-                          item.data.title,
-                          item.data.author,
-                          myDate.toLocaleString(),
-                          item.data.selftext,
-                          item.data.score,
-                        ])
-                      );
-                    }}>
-                    See Comments
-                  </button>
-                </div>
-              </div>
-            );
-          }
-          return null;
-        })}
-      </div>
-    );
+    filteredList = postsList.filter((item) => {
+      return (
+        item.data.title.toLowerCase().includes(queryInput.toLowerCase()) ||
+        item.data.selftext.toLowerCase().includes(queryInput.toLowerCase()) ||
+        item.data.author.toLowerCase().includes(queryInput.toLowerCase())
+      );
+    });
   }
 
   return (
     <div className='posts-wrapper'>
-      {/* <h2>{postsList[0].data.subreddit_name_prefixed}</h2> */}
-      {postsList.map((item, idx) => {
+      {filteredList.map((item, idx) => {
         let myDate = new Date(item.data.created * 1000);
 
         return (

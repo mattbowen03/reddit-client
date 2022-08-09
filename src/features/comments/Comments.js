@@ -31,52 +31,15 @@ function Comments() {
     return <div>Failed to load.</div>;
   }
 
+  let filteredList = commentsList;
+
   if (queryInput) {
-    return (
-      <div className='post-comments-container'>
-        <div className='original-post'>
-          <div className='comment-left'>
-            <div className='upvote'>
-              <img src={upArrow} className='upArrow' alt='up-arrow' />
-            </div>
-            <div className='vote-number'>{originalPost[4]}</div>
-            <img src={dnArrow} className='dnArrow' alt='down-arrow' />
-            <div className='downVote'></div>
-          </div>
-          <div className='comment-right'>
-            <h3>{"Posted by: " + originalPost[1] + "on " + originalPost[2]}</h3>
-            <h2>{originalPost[0]}</h2>
-            <ReactMarkdown>{originalPost[3]}</ReactMarkdown>
-          </div>
-        </div>
-        <div className='comments'>
-          {commentsList.map((item, idx) => {
-            if (
-              item.data.body.includes(queryInput) ||
-              item.data.author.includes(queryInput)
-            ) {
-              return (
-                <div className='comment-wrapper' key={idx}>
-                  <div className='comment-left'>
-                    <div className='upvote'>
-                      <img src={upArrow} className='upArrow' alt='up-arrow' />
-                    </div>
-                    <div className='vote-number'>{item.data.score}</div>
-                    <img src={dnArrow} className='dnArrow' alt='down-arrow' />
-                    <div className='downVote'></div>
-                  </div>
-                  <div className='comment-right'>
-                    <ReactMarkdown>{item.data.body}</ReactMarkdown>
-                    <p>{item.data.author}</p>
-                  </div>
-                </div>
-              );
-            }
-            return null;
-          })}
-        </div>
-      </div>
-    );
+    filteredList = commentsList.filter((item) => {
+      return (
+        item.data.body.toLowerCase().includes(queryInput) ||
+        item.data.author.toLowerCase().includes(queryInput)
+      );
+    });
   }
 
   return (
@@ -98,7 +61,7 @@ function Comments() {
       </div>
 
       <div className='comments'>
-        {commentsList.map((item, idx) => {
+        {filteredList.map((item, idx) => {
           return (
             <div className='comment-wrapper' key={idx}>
               <div className='comment-left'>

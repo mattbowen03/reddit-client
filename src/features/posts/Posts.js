@@ -5,7 +5,7 @@ import {
   selectPosts,
   selectPostsVisibility,
   togglePostsVisibility,
-  setSelectedPost,
+  setOriginalPostID,
 } from "./postsSlice";
 import {
   fetchCommentsAsync,
@@ -13,6 +13,7 @@ import {
 } from "../comments/commentsSlice";
 import upArrow from "../../icons/bx-up-arrow-alt.svg";
 import dnArrow from "../../icons/bx-down-arrow-alt.svg";
+import commentIcon from "../../icons/bx-comment-detail.svg";
 import { selectQueryInput } from "../searchBar/searchBarSlice";
 import ReactMarkdown from "react-markdown";
 
@@ -50,7 +51,19 @@ function Posts() {
         let myDate = new Date(item.data.created * 1000);
 
         return (
-          <div className='post' key={idx}>
+          <div
+            onClick={() => {
+              dispatch(
+                fetchCommentsAsync(
+                  "https://www.reddit.com" + item.data.permalink + ".json"
+                )
+              );
+              dispatch(toggleCommentsVisibility());
+              dispatch(togglePostsVisibility());
+              dispatch(setOriginalPostID(item.data.id));
+            }}
+            className='post'
+            key={idx}>
             <div className='post-left'>
               <div className='upvote'>
                 <img src={upArrow} className='upArrow' alt='up-arrow' />
@@ -60,15 +73,19 @@ function Posts() {
               <div className='downVote'></div>
             </div>
             <div className='post-right'>
-              <h3>
-                Posted by {item.data.author} on {myDate.toLocaleString()}
-              </h3>
-              <h2>{item.data.title}</h2>
-              <div className='post-content'>
-                <ReactMarkdown>{item.data.selftext}</ReactMarkdown>
+              <div className='post-wrap'>
+                <h3>
+                  Posted by {item.data.author} on {myDate.toLocaleString()}
+                </h3>
+                <h2>{item.data.title}</h2>
+                <div className='post-text'>
+                  <ReactMarkdown>{item.data.selftext}</ReactMarkdown>
+                </div>
+                <img src={item.data.url} alt='' />
               </div>
-              <img src={item.data.url} alt='' />
+              <div className='text-fade'></div>
               <button
+                className='commentsBtn'
                 key={idx}
                 onClick={() => {
                   dispatch(
@@ -78,17 +95,10 @@ function Posts() {
                   );
                   dispatch(toggleCommentsVisibility());
                   dispatch(togglePostsVisibility());
-                  dispatch(
-                    setSelectedPost([
-                      item.data.title,
-                      item.data.author,
-                      myDate.toLocaleString(),
-                      item.data.selftext,
-                      item.data.score,
-                    ])
-                  );
+                  dispatch(setOriginalPostID(item.data.id));
                 }}>
-                See Comments
+                <img src={commentIcon} alt=''></img>
+                {item.data.num_comments} Comments
               </button>
             </div>
           </div>

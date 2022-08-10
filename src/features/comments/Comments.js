@@ -9,7 +9,7 @@ import "./comments.css";
 import upArrow from "../../icons/bx-up-arrow-alt.svg";
 import dnArrow from "../../icons/bx-down-arrow-alt.svg";
 import { selectQueryInput } from "../searchBar/searchBarSlice";
-import { selectedPost } from "../posts/postsSlice";
+import { selectoriginalPostID, selectPosts } from "../posts/postsSlice";
 import ReactMarkdown from "react-markdown";
 
 function Comments() {
@@ -17,7 +17,8 @@ function Comments() {
   const status = useSelector(selectCommentsStatus);
   const visibility = useSelector(selectCommentsVisibility);
   const queryInput = useSelector(selectQueryInput);
-  const originalPost = useSelector(selectedPost);
+  const originalPostID = useSelector(selectoriginalPostID);
+  const postsList = useSelector(selectPosts);
 
   if (visibility === "HIDDEN") {
     return;
@@ -42,6 +43,18 @@ function Comments() {
     });
   }
 
+  //Filters postList array with selected post's id
+  let originalPost = postsList.filter((item) => {
+    if (item.data.id === originalPostID) {
+      return item.data;
+    }
+    return null;
+  });
+
+  let myDate = new Date(originalPost[0].data.created * 1000);
+
+  console.log(originalPost);
+
   return (
     <div className='post-comments-container'>
       <div className='original-post'>
@@ -49,14 +62,20 @@ function Comments() {
           <div className='upvote'>
             <img src={upArrow} className='upArrow' alt='up-arrow' />
           </div>
-          <div className='vote-number'>{originalPost[4]}</div>
+          <div className='vote-number'>{originalPost[0].data.score}</div>
           <img src={dnArrow} className='dnArrow' alt='down-arrow' />
           <div className='downVote'></div>
         </div>
         <div className='comment-right'>
-          <h3>{"Posted by: " + originalPost[1] + "on " + originalPost[2]}</h3>
-          <h2>{originalPost[0]}</h2>
-          <ReactMarkdown>{originalPost[3]}</ReactMarkdown>
+          <h3>
+            {"Posted by: " +
+              originalPost[0].data.author +
+              " on " +
+              myDate.toLocaleDateString()}
+          </h3>
+          <h2>{originalPost[0].data.title}</h2>
+          <ReactMarkdown>{originalPost[0].data.selftext}</ReactMarkdown>
+          <img src={originalPost[0].data.url} alt=''></img>
         </div>
       </div>
 

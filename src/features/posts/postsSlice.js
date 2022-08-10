@@ -5,7 +5,7 @@ const initialState = {
   value: "Loading",
   status: "idle",
   visibility: "SHOW",
-  selectedPost: "none",
+  originalPostID: "none",
   currentSubreddit: "Loading",
 };
 
@@ -24,8 +24,8 @@ export const postsSlice = createSlice({
     seePosts: (state, action) => {
       state.value = action.payload;
     },
-    setSelectedPost: (state, action) => {
-      state.selectedPost = action.payload;
+    setOriginalPostID: (state, action) => {
+      state.originalPostID = action.payload;
     },
     togglePostsVisibility: (state, action) => {
       state.visibility === "HIDDEN"
@@ -57,11 +57,12 @@ export const selectPostsStatus = (state) => state.posts.status;
 
 export const selectPostsVisibility = (state) => state.posts.visibility;
 
-export const selectedPost = (state) => state.posts.selectedPost;
+export const selectoriginalPostID = (state) => state.posts.originalPostID;
+
 export const selectCurrentSubreddit = (state) => state.posts.currentSubreddit;
 
 //actions
-export const { seePosts, togglePostsVisibility, setSelectedPost } =
+export const { seePosts, togglePostsVisibility, setOriginalPostID } =
   postsSlice.actions;
 
 export default postsSlice.reducer;

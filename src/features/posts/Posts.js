@@ -82,10 +82,17 @@ function Posts() {
                 <img src={item.data.url} alt='' />
               </div>
               <div className='text-fade'></div>
-              <button className='commentsBtn' key={idx}>
-                <img src={commentIcon} alt=''></img>
-                {item.data.num_comments} Comments
-              </button>
+              <div className='bottom-post-icons'>
+                <div className='comments-icon-container'>
+                  <img className='commentIcon' src={commentIcon} alt=''></img>
+                  <span>{item.data.num_comments} Comments</span>
+                </div>
+                <div className='votes-icon-container'>
+                  <img src={upArrow} alt='' />
+                  <span>{item.data.score}</span>
+                  <img src={dnArrow} alt='' />
+                </div>
+              </div>
             </div>
           </div>
         );

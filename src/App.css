@@ -75,6 +75,7 @@ nav {
   z-index: 99;
 }
 
+
 .nav-left,
 .nav-right,
 .nav-center {
@@ -86,6 +87,7 @@ nav {
 
 .nav-left {
   justify-content: flex-start;
+  margin: 0;
 }
 
 .logo a {
@@ -96,7 +98,18 @@ nav {
 }
 
 .nav-right {
-  align-items: flex-end;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.nav-right img {
+  height: 60px;
+  width: auto;
+}
+
+.hamburger-wrapper {
+  display: flex;
+  align-items: center;
 }
 
 .nav-center {
@@ -151,12 +164,34 @@ nav {
 
 /* On screens that are 600px or less, do this: */
 @media screen and (max-width: 768px) {
-  .main-content-left {
-    margin-right: 5px;
+
+  .main-content-right {
+    display: none;
   }
   
-  .main-content-right {
-    margin-left: 5px;
+  .main-content-left {
+    margin-right: 0px;
+  }
+
+  nav {
+    padding: 0 2%;
+  }
+
+  .nav-center {
+    display: none;
+  }
+
+  .nav-right {
+    display: flex;
+    width: auto;
+  }
+
+  @media screen and (max-width: 425px) {
+    .logo a {
+      font-size: 30px;
+      vertical-align: baseline;
+      margin-top: 10px;
+    }
   }
 
 }

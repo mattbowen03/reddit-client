@@ -11,6 +11,7 @@ import {
   selectCommentsVisibility,
 } from "../comments/commentsSlice";
 import { subredditList } from "../../modules/subredditList";
+import SearchBar from "../searchBar/SearchBar";
 
 function SubRedditSelections() {
   const dispatch = useDispatch();
@@ -20,6 +21,9 @@ function SubRedditSelections() {
   return (
     <div className='selections-wrapper'>
       <h3>My subReddits</h3>
+      <div className='hamburger-searchBar'>
+        <SearchBar />
+      </div>
       {subredditList.map((subreddit, idx) => {
         return (
           <button

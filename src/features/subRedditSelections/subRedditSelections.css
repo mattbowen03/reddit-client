@@ -42,3 +42,27 @@
   border-bottom: 1px solid #D9D9D9;
   text-align: center;
 }
+
+.hamburger-searchBar {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .selections-wrapper {
+    margin-top: 0;
+    border-radius: 0;
+  }
+
+  .selections-wrapper h3 {
+    height: 70px;
+    border-bottom: 1px solid #262626;
+  }
+
+  .subredditSelectionButton {
+    border-bottom: 1px solid #84D98A;
+  }
+
+  .hamburger-searchBar {
+    display: block;
+  }
+}

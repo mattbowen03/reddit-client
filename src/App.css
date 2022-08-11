@@ -108,7 +108,7 @@ nav {
 }
 
 .hamburger-wrapper {
-  display: flex;
+  display: none;
   align-items: center;
 }
 
@@ -166,7 +166,23 @@ nav {
 @media screen and (max-width: 768px) {
 
   .main-content-right {
-    display: none;
+    display: block;
+    position: fixed;
+    transform: translateY(-100%);
+    transition: transform 0.2s;
+    top: 0;
+    right: 0;
+    z-index: 99;
+    background: rgba(217, 217, 217, .95);
+    padding: 0px;
+    height: 100%;
+    box-shadow: -2px 0px 2px rgba(0, 0, 0, .05);
+    width: 300px;
+    z-index: 99;
+  }
+
+  .showMenu {
+    transform: translateY(0);
   }
   
   .main-content-left {
@@ -186,12 +202,26 @@ nav {
     width: auto;
   }
 
-  @media screen and (max-width: 425px) {
-    .logo a {
-      font-size: 30px;
-      vertical-align: baseline;
-      margin-top: 10px;
-    }
+  .hamburger-wrapper {
+    display: flex;
   }
+
+
+  @media screen and (max-width: 600px) {
+    .main-content-right {
+      width: 100%;
+    }
+    
+  }
+
+  @media screen and (max-width: 425px) {
+  .logo a {
+    font-size: 30px;
+    vertical-align: baseline;
+    margin-top: 10px;
+  }
+  }
+
+
 
 }

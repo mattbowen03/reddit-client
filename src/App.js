@@ -9,7 +9,7 @@ import { fetchPostsAsync } from "./features/posts/postsSlice";
 import { useDispatch } from "react-redux";
 import Comments from "./features/comments/Comments";
 import { subredditList } from "./modules/subredditList";
-import hamburger from "./icons/bx-menu.svg";
+import HamburgerMenu from "./features/hamburgerMenu/HamburgerMenu";
 
 function App() {
   //allows us to dispatchActions
@@ -32,9 +32,7 @@ function App() {
             <SearchBar />
           </div>
           <div className='nav-right'>
-            <div className='hamburger-wrapper'>
-              <img src={hamburger} alt='' />
-            </div>
+            <HamburgerMenu />
           </div>
         </nav>
       </header>
@@ -45,7 +43,7 @@ function App() {
             <Comments />
             <Posts />
           </div>
-          <div className='main-content-right'>
+          <div className={"main-content-right "}>
             <SubRedditSelections />
           </div>
         </div>

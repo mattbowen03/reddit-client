@@ -1,7 +1,7 @@
 input[type=text] {
   border-radius: 26px;
   height: 52px;
-  width: 90%;
+  width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
@@ -14,4 +14,8 @@ input[type=text] {
 
 input[type=text]:focus {
   border: 3px solid #84D98A;
+}
+
+.searchBar-wrapper {
+  width: 100%;
 }

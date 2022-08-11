@@ -31,8 +31,6 @@ function Posts() {
     return <div>Loading...</div>;
   }
 
-  console.log({ postsList });
-
   let filteredList = postsList;
 
   if (queryInput) {
@@ -84,19 +82,7 @@ function Posts() {
                 <img src={item.data.url} alt='' />
               </div>
               <div className='text-fade'></div>
-              <button
-                className='commentsBtn'
-                key={idx}
-                onClick={() => {
-                  dispatch(
-                    fetchCommentsAsync(
-                      "https://www.reddit.com" + item.data.permalink + ".json"
-                    )
-                  );
-                  dispatch(toggleCommentsVisibility());
-                  dispatch(togglePostsVisibility());
-                  dispatch(setOriginalPostID(item.data.id));
-                }}>
+              <button className='commentsBtn' key={idx}>
                 <img src={commentIcon} alt=''></img>
                 {item.data.num_comments} Comments
               </button>

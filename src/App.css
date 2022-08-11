@@ -79,20 +79,20 @@ nav {
 .nav-right,
 .nav-center {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   width: 100%;
   height: 100%;
 }
 
 .nav-left {
-  align-items: flex-start;
+  justify-content: flex-start;
 }
 
-.logo {
+.logo a {
   color: #75BF7A;
   font-size: 42px;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .nav-right {
@@ -130,28 +130,33 @@ nav {
   margin-left: 10px;
 }
 
-/* Old React App */
-.App-header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+/* Media Queries */
+/* On screens that are 1440px or less, do this:*/
+@media screen and (max-width: 1240px) {
+  .nav-right{
+    display: none;
+  }
+
+  .nav-center {
+    justify-content: flex-end;
+  }
 }
 
-.App-link {
-  color: rgb(112, 76, 182);
+@media screen and (max-width: 1024px) {
+  .main-content-right {
+    width: 200px;
+
+  }
 }
 
-@keyframes App-logo-float {
-  0% {
-    transform: translateY(0);
+/* On screens that are 600px or less, do this: */
+@media screen and (max-width: 768px) {
+  .main-content-left {
+    margin-right: 5px;
   }
-  50% {
-    transform: translateY(10px);
+  
+  .main-content-right {
+    margin-left: 5px;
   }
-  100% {
-    transform: translateY(0px);
-  }
+
 }

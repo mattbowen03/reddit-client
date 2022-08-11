@@ -17,7 +17,7 @@ function SearchBar() {
   }
 
   return (
-    <div>
+    <div className='searchBar-wrapper'>
       <input
         type='text'
         placeholder={"Search r/" + subreddit[0].data.subreddit}

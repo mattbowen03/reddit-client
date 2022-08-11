@@ -1,16 +1,22 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import {
   selectComments,
   selectCommentsStatus,
   selectCommentsVisibility,
+  toggleCommentsVisibility,
 } from "./commentsSlice";
 import "./comments.css";
 import upArrow from "../../icons/bx-up-arrow-alt.svg";
 import dnArrow from "../../icons/bx-down-arrow-alt.svg";
 import { selectQueryInput } from "../searchBar/searchBarSlice";
-import { selectoriginalPostID, selectPosts } from "../posts/postsSlice";
+import {
+  selectoriginalPostID,
+  selectPosts,
+  togglePostsVisibility,
+} from "../posts/postsSlice";
 import ReactMarkdown from "react-markdown";
+import backArrow from "../../icons/bx-arrow-back.svg";
 
 function Comments() {
   const commentsList = useSelector(selectComments);
@@ -19,6 +25,7 @@ function Comments() {
   const queryInput = useSelector(selectQueryInput);
   const originalPostID = useSelector(selectoriginalPostID);
   const postsList = useSelector(selectPosts);
+  const dispatch = useDispatch();
 
   if (visibility === "HIDDEN") {
     return;
@@ -53,8 +60,6 @@ function Comments() {
 
   let myDate = new Date(originalPost[0].data.created * 1000);
 
-  console.log(originalPost);
-
   return (
     <div className='post-comments-container'>
       <div className='original-post'>
@@ -67,6 +72,17 @@ function Comments() {
           <div className='downVote'></div>
         </div>
         <div className='comment-right'>
+          <button
+            onClick={() => {
+              if (visibility === "SHOW") {
+                dispatch(togglePostsVisibility());
+                dispatch(toggleCommentsVisibility());
+              }
+            }}
+            className='commentsBtn'>
+            <img src={backArrow} alt=''></img>
+            r/{postsList[0].data.subreddit}
+          </button>
           <h3>
             {"Posted by: " +
               originalPost[0].data.author +

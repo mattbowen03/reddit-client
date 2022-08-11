@@ -2,7 +2,6 @@
   display: flex;
   background-color: white;
   margin: 20px 0;
-  width: 700px;
   border-radius: 4px 4px 4px 4px;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, .05);
   cursor: pointer;
@@ -31,16 +30,17 @@
 .post-wrap {
   overflow: hidden;
 }
+
 .post-right {
   padding: 20px;
-  width: 650px;
+  width: 100%;
   position: relative;
 }
 
 .post-right img {
   height: auto;
   width: 100%;
-  margin-bottom: 15px;
+  margin-bottom: 40px;
   overflow: hidden;
 }
 
@@ -81,4 +81,18 @@
   width: 20px;
   margin: 0;
   margin-right: 7px;
+}
+
+/* Media Queries */
+/* On screens that are 1440px or less, do this:*/
+@media screen and (max-width: 1440px) {
+  .post, .posts-wrapper, .main-content-left {
+    width: 650px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .post, .posts-wrapper, .main-content-left {
+    width: 550px;
+  }
 }

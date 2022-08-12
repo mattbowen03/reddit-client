@@ -1,0 +1,39 @@
+.errorMessage-wrapper {
+  background: rgba(217, 217, 217, .7);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.errorMessage-content {
+  width: 50%;
+  padding: 0 15px 7px;
+  height: auto;
+  background-color: rgb(255, 255, 255);
+  border-radius: 4px;
+  word-wrap: break-word;
+}
+
+.errorMessage-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.errorMessage-header img {
+  height: 40px;
+  width: 40px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .errorMessage-content {
+    width: 90%;
+  }
+}

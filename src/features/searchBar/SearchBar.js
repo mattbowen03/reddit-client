@@ -7,20 +7,25 @@ import {
   setSearchBarValue,
   selectSearchBarValue,
 } from "./searchBarSlice";
-import { selectPosts } from "../posts/postsSlice";
+import { selectPosts, selectPostsStatus } from "../posts/postsSlice";
 import { toggleHamburgerMenuVisibility } from "../hamburgerMenu/hamburgerMenuSlice";
 
 function SearchBar() {
   const dispatch = useDispatch();
-  const subreddit = useSelector(selectPosts);
+  const postsList = useSelector(selectPosts);
   const searchBarValue = useSelector(selectSearchBarValue);
+  const postsStatus = useSelector(selectPostsStatus);
 
-  if (subreddit === "Loading") {
+  if (postsList === "Loading") {
     return (
       <div>
         <input type='text' placeholder={"Search r/"}></input>
       </div>
     );
+  }
+
+  if (postsStatus === "rejected") {
+    return;
   }
 
   return (
@@ -35,7 +40,7 @@ function SearchBar() {
         }}>
         <input
           type='text'
-          placeholder={"Search r/" + subreddit[0].data.subreddit}
+          placeholder={"Search r/" + postsList[0].data.subreddit}
           value={searchBarValue}
           onChange={(e) => {
             dispatch(setSearchBarValue(e.target.value));

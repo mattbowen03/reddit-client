@@ -6,6 +6,7 @@ import {
   selectPostsVisibility,
   togglePostsVisibility,
   setOriginalPostID,
+  selectPostsStatus,
 } from "./postsSlice";
 import {
   fetchCommentsAsync,
@@ -22,6 +23,7 @@ function Posts() {
   const visibility = useSelector(selectPostsVisibility);
   const queryInput = useSelector(selectQueryInput);
   const dispatch = useDispatch();
+  const postsStatus = useSelector(selectPostsStatus);
 
   if (visibility === "HIDDEN") {
     return;
@@ -29,6 +31,10 @@ function Posts() {
 
   if (postsList === "Loading") {
     return <div>Loading...</div>;
+  }
+
+  if (postsStatus === "rejected") {
+    return;
   }
 
   let filteredList = postsList;

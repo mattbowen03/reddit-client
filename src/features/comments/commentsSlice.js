@@ -38,7 +38,8 @@ export const commentsSlice = createSlice({
       state.status = "fulfilled";
     },
     [fetchCommentsAsync.rejected]: (state) => {
-      state.value = "failed";
+      state.value = "rejected";
+      state.status = "rejected";
     },
   },
 });

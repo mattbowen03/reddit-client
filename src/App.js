@@ -12,6 +12,7 @@ import { subredditList } from "./modules/subredditList";
 import HamburgerMenu from "./features/hamburgerMenu/HamburgerMenu";
 import Overlay from "./features/overlay/Overlay";
 import QueryResults from "./features/queryResults/QueryResults";
+import ErrorMessage from "./features/errorMessage/ErrorMessage";
 
 function App() {
   //allows us to dispatchActions
@@ -42,6 +43,7 @@ function App() {
       </header>
 
       <section className='main-section'>
+        <ErrorMessage />
         <div className='main-content-wrapper'>
           <div className='main-content-left'>
             <QueryResults />

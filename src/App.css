@@ -147,6 +147,7 @@ nav {
   height: 100%;
   width: 100%;
   z-index: 97;
+  display: none;
 }
 
 /* Media Queries */
@@ -212,6 +213,10 @@ nav {
 
   .nav-center {
     display: none;
+  }
+
+  .overlay {
+    display: block;
   }
 
   /* Displays hamburger icon */

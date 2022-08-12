@@ -11,6 +11,7 @@ import Comments from "./features/comments/Comments";
 import { subredditList } from "./modules/subredditList";
 import HamburgerMenu from "./features/hamburgerMenu/HamburgerMenu";
 import Overlay from "./features/overlay/Overlay";
+import QueryResults from "./features/queryResults/QueryResults";
 
 function App() {
   //allows us to dispatchActions
@@ -43,6 +44,7 @@ function App() {
       <section className='main-section'>
         <div className='main-content-wrapper'>
           <div className='main-content-left'>
+            <QueryResults />
             <Comments />
             <Posts />
           </div>

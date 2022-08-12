@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  queryInput: null,
+  queryInput: "",
   queryResults: "",
   status: "idle",
   visibility: "SHOW",
@@ -21,6 +21,9 @@ export const searchBarSlice = createSlice({
     setEmptyValue: (state) => {
       state.value = "";
     },
+    setEmptyQueryInput: (state) => {
+      state.queryInput = "";
+    },
   },
 });
 
@@ -30,7 +33,11 @@ export const selectQueryResults = (state) => state.searchBar.queryResults;
 export const selectSearchBarValue = (state) => state.searchBar.value;
 
 //actions
-export const { setQueryInput, setEmptyValue, setSearchBarValue } =
-  searchBarSlice.actions;
+export const {
+  setQueryInput,
+  setEmptyValue,
+  setSearchBarValue,
+  setEmptyQueryInput,
+} = searchBarSlice.actions;
 
 export default searchBarSlice.reducer;

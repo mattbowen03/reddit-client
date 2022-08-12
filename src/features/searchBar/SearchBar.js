@@ -31,6 +31,7 @@ function SearchBar() {
           dispatch(setQueryInput());
           dispatch(setEmptyValue());
           dispatch(toggleHamburgerMenuVisibility());
+          document.activeElement.blur();
         }}>
         <input
           type='text'

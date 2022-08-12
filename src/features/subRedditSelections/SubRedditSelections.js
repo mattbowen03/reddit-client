@@ -12,11 +12,16 @@ import {
 } from "../comments/commentsSlice";
 import { subredditList } from "../../modules/subredditList";
 import SearchBar from "../searchBar/SearchBar";
+import {
+  toggleHamburgerMenuVisibility,
+  selectHamburgerMenuVisibility,
+} from "../hamburgerMenu/hamburgerMenuSlice";
 
 function SubRedditSelections() {
   const dispatch = useDispatch();
   const visibility = useSelector(selectCommentsVisibility);
   const currentSubreddit = "r/" + useSelector(selectCurrentSubreddit);
+  const hamburgerMenuVisibility = useSelector(selectHamburgerMenuVisibility);
 
   return (
     <div className='selections-wrapper'>
@@ -38,6 +43,9 @@ function SubRedditSelections() {
               if (visibility === "SHOW") {
                 dispatch(togglePostsVisibility());
                 dispatch(toggleCommentsVisibility());
+              }
+              if (hamburgerMenuVisibility === "SHOW") {
+                dispatch(toggleHamburgerMenuVisibility());
               }
             }}>
             {subreddit.name}

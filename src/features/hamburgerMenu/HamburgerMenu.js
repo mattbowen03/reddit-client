@@ -1,6 +1,7 @@
 import React from "react";
 import SubRedditSelections from "../subRedditSelections/SubRedditSelections";
 import hamburgerIcon from "../../icons/bx-menu.svg";
+import xIcon from "../../icons/bx-x.svg";
 import {
   toggleHamburgerMenuVisibility,
   selectHamburgerMenuVisibility,
@@ -9,22 +10,38 @@ import { useDispatch, useSelector } from "react-redux";
 
 function HamburgerMenu() {
   const dispatch = useDispatch();
-  const hamburgerVisibility = useSelector(selectHamburgerMenuVisibility);
+  const hamburgerMenuVisibility = useSelector(selectHamburgerMenuVisibility);
+  const hamburgerClass =
+    hamburgerMenuVisibility === "HIDDEN"
+      ? "hamburgerMenu"
+      : "hamburgerMenu showMenu";
 
   return (
     <div className='hamburger-wrapper'>
-      {hamburgerVisibility === "HIDDEN" && (
-        <img
-          onClick={() => {
-            dispatch(toggleHamburgerMenuVisibility());
-          }}
-          className='hamnburger'
-          src={hamburgerIcon}
-          alt=''
-        />
-      )}
-
-      {hamburgerVisibility === "SHOW" && <SubRedditSelections />}
+      <img
+        onClick={() => {
+          dispatch(toggleHamburgerMenuVisibility());
+        }}
+        className={
+          "hamburger " +
+          (hamburgerMenuVisibility === "HIDDEN" ? "showIcon" : "hideIcon")
+        }
+        src={hamburgerIcon}
+        alt=''
+      />
+      <img
+        onClick={() => {
+          dispatch(toggleHamburgerMenuVisibility());
+        }}
+        className={
+          "hamburger " + (hamburgerMenuVisibility === "HIDDEN" && "hideIcon")
+        }
+        src={xIcon}
+        alt=''
+      />
+      <div className={hamburgerClass}>
+        <SubRedditSelections />
+      </div>
     </div>
   );
 }

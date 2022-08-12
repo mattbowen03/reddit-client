@@ -5,6 +5,7 @@ const initialState = {
   queryResults: "",
   status: "idle",
   visibility: "SHOW",
+  value: "",
 };
 
 export const searchBarSlice = createSlice({
@@ -14,6 +15,12 @@ export const searchBarSlice = createSlice({
     setQueryInput: (state, action) => {
       state.queryInput = action.payload;
     },
+    setSearchBarValue: (state, action) => {
+      state.value = action.payload;
+    },
+    setEmptyValue: (state) => {
+      state.value = "";
+    },
   },
 });
 
@@ -22,6 +29,7 @@ export const selectQueryInput = (state) => state.searchBar.queryInput;
 export const selectQueryResults = (state) => state.searchBar.queryResults;
 
 //actions
-export const { setQueryInput } = searchBarSlice.actions;
+export const { setQueryInput, setEmptyValue, setSearchBarValue } =
+  searchBarSlice.actions;
 
 export default searchBarSlice.reducer;

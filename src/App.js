@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux";
 import Comments from "./features/comments/Comments";
 import { subredditList } from "./modules/subredditList";
 import HamburgerMenu from "./features/hamburgerMenu/HamburgerMenu";
+import Overlay from "./features/overlay/Overlay";
 
 function App() {
   //allows us to dispatchActions
@@ -18,11 +19,13 @@ function App() {
   //runs on page load
   useEffect(() => {
     //dispatches async thunk from postsSlice.js
+    console.log("useEffect Run");
     dispatch(fetchPostsAsync(subredditList[0].url));
   });
 
   return (
     <div className='App'>
+      <Overlay />
       <header className='app-header'>
         <nav>
           <h1 className='nav-left logo'>
@@ -43,7 +46,7 @@ function App() {
             <Comments />
             <Posts />
           </div>
-          <div className={"main-content-right "}>
+          <div className='main-content-right'>
             <SubRedditSelections />
           </div>
         </div>

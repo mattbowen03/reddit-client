@@ -1,7 +1,7 @@
 import React from "react";
 import "./searchBar.css";
 import { useDispatch, useSelector } from "react-redux";
-import { setQueryInput } from "./searchBarSlice";
+import { setQueryInput, setSearchBarValue } from "./searchBarSlice";
 import { selectPosts } from "../posts/postsSlice";
 
 function SearchBar() {
@@ -21,7 +21,10 @@ function SearchBar() {
       <input
         type='text'
         placeholder={"Search r/" + subreddit[0].data.subreddit}
-        onChange={(e) => dispatch(setQueryInput(e.target.value))}></input>
+        onChange={(e) => {
+          dispatch(setQueryInput(e.target.value));
+          dispatch(setSearchBarValue(e.target.value));
+        }}></input>
     </div>
   );
 }

@@ -2,11 +2,11 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { fetchPosts } from "../redditAPI/postsAPI";
 
 const initialState = {
-  value: "Loading",
+  value: "loading",
   status: "idle",
   visibility: "SHOW",
   originalPostID: "none",
-  currentSubreddit: "Loading",
+  currentSubreddit: "loading",
 };
 
 export const fetchPostsAsync = createAsyncThunk(
@@ -35,19 +35,16 @@ export const postsSlice = createSlice({
     },
   },
   extraReducers: {
-    [fetchPostsAsync.pending]: (state, action) => {
-      console.log("Payload pending:", action.payload);
-      state.value = "Loading";
-      state.status = "Pending";
+    [fetchPostsAsync.pending]: (state) => {
+      state.value = "loading";
+      state.status = "loading";
     },
     [fetchPostsAsync.fulfilled]: (state, action) => {
-      console.log("actionPayload fulfilled:", action.payload);
       state.value = action.payload;
-      state.status = "idle";
+      state.status = "fulfilled";
       state.currentSubreddit = action.payload[0].data.subreddit;
     },
-    [fetchPostsAsync.rejected]: (state, action) => {
-      console.log("actionPayload rejected:", action.payload);
+    [fetchPostsAsync.rejected]: (state) => {
       state.value = "rejected";
       state.status = "rejected";
     },

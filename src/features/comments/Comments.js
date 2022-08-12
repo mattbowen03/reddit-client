@@ -33,7 +33,11 @@ function Comments() {
     return;
   }
 
-  if (commentsStatus === "idle" || commentsStatus === "loading") {
+  if (
+    commentsStatus === "idle" ||
+    commentsStatus === "loading" ||
+    commentsStatus === "rejected"
+  ) {
     return (
       <div className='comment-skeleton'>
         <h1>
@@ -50,7 +54,19 @@ function Comments() {
   }
 
   if (commentsStatus === "rejected") {
-    return;
+    return (
+      <div className='comment-skeleton'>
+        <h1>
+          <Skeleton count={1} />
+        </h1>
+        <p>
+          <Skeleton count={5} />
+        </p>
+        <p>
+          <Skeleton count={5} />
+        </p>
+      </div>
+    );
   }
 
   let filteredList = commentsList;

@@ -31,7 +31,7 @@ function Posts() {
     return;
   }
 
-  if (postsList === "Loading") {
+  if (postsStatus !== "fulfilled") {
     return (
       <div className='post-skeleton'>
         <h1>
@@ -47,18 +47,14 @@ function Posts() {
     );
   }
 
-  if (postsStatus === "rejected") {
-    return;
-  }
-
   let filteredList = postsList;
 
   if (queryInput) {
     filteredList = postsList.filter((item) => {
       return (
-        item.data.title.toLowerCase().includes(queryInput.toLowerCase()) ||
-        item.data.selftext.toLowerCase().includes(queryInput.toLowerCase()) ||
-        item.data.author.toLowerCase().includes(queryInput.toLowerCase())
+        item.data?.title?.toLowerCase().includes(queryInput.toLowerCase()) ||
+        item.data?.selftext?.toLowerCase().includes(queryInput.toLowerCase()) ||
+        item.data?.author?.toLowerCase().includes(queryInput.toLowerCase())
       );
     });
   }
@@ -66,19 +62,19 @@ function Posts() {
   return (
     <div className='posts-wrapper'>
       {filteredList.map((item, idx) => {
-        let myDate = new Date(item.data.created * 1000);
+        let myDate = new Date(item.data?.created * 1000);
 
         return (
           <div
             onClick={() => {
               dispatch(
                 fetchCommentsAsync(
-                  "https://www.reddit.com" + item.data.permalink + ".json"
+                  "https://www.reddit.com" + item.data?.permalink + ".json"
                 )
               );
               dispatch(toggleCommentsVisibility());
               dispatch(togglePostsVisibility());
-              dispatch(setOriginalPostID(item.data.id));
+              dispatch(setOriginalPostID(item.data?.id));
             }}
             className='post'
             key={idx}>
@@ -86,30 +82,30 @@ function Posts() {
               <div className='upvote'>
                 <img src={upArrow} className='upArrow' alt='up-arrow' />
               </div>
-              <div className='vote-number'>{item.data.score}</div>
+              <div className='vote-number'>{item.data?.score}</div>
               <img src={dnArrow} className='dnArrow' alt='down-arrow' />
               <div className='downVote'></div>
             </div>
             <div className='post-right'>
               <div className='post-wrap'>
                 <h3>
-                  Posted by {item.data.author} on {myDate.toLocaleString()}
+                  Posted by {item.data?.author} on {myDate.toLocaleString()}
                 </h3>
-                <h2>{item.data.title}</h2>
+                <h2>{item.data?.title}</h2>
                 <div className='post-text'>
-                  <ReactMarkdown>{item.data.selftext}</ReactMarkdown>
+                  <ReactMarkdown>{item.data?.selftext}</ReactMarkdown>
                 </div>
-                <img src={item.data.url} alt='' />
+                <img src={item.data?.url} alt='' />
               </div>
               <div className='text-fade'></div>
               <div className='bottom-post-icons'>
                 <div className='comments-icon-container'>
                   <img className='commentIcon' src={commentIcon} alt=''></img>
-                  <span>{item.data.num_comments} Comments</span>
+                  <span>{item.data?.num_comments} Comments</span>
                 </div>
                 <div className='votes-icon-container'>
                   <img src={upArrow} alt='' />
-                  <span>{item.data.score}</span>
+                  <span>{item.data?.score}</span>
                   <img src={dnArrow} alt='' />
                 </div>
               </div>

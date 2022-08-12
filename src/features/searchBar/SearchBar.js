@@ -16,7 +16,7 @@ function SearchBar() {
   const searchBarValue = useSelector(selectSearchBarValue);
   const postsStatus = useSelector(selectPostsStatus);
 
-  if (postsList === "Loading") {
+  if (postsList === "loading") {
     return (
       <div className='searchBar-wrapper'>
         <form>
@@ -42,7 +42,7 @@ function SearchBar() {
         }}>
         <input
           type='text'
-          placeholder={"Search r/" + postsList[0].data.subreddit}
+          placeholder={"Search r/" + postsList[0]?.data?.subreddit}
           value={searchBarValue}
           onChange={(e) => {
             dispatch(setSearchBarValue(e.target.value));

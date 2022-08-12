@@ -12,7 +12,7 @@ function QueryResults() {
   const subreddit = useSelector(selectPosts);
   const dispatch = useDispatch();
 
-  if (subreddit === "Loading") {
+  if (subreddit === "loading") {
     return;
   }
 

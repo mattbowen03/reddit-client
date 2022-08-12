@@ -65,4 +65,8 @@
   .hamburger-searchBar {
     display: block;
   }
+
+  .subredditSelectionButton:last-child {
+    border-radius: 0;
+  }
 }

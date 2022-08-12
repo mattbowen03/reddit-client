@@ -12,8 +12,8 @@ export const searchBarSlice = createSlice({
   name: "searchBar",
   initialState,
   reducers: {
-    setQueryInput: (state, action) => {
-      state.queryInput = action.payload;
+    setQueryInput: (state) => {
+      state.queryInput = state.value;
     },
     setSearchBarValue: (state, action) => {
       state.value = action.payload;
@@ -27,6 +27,7 @@ export const searchBarSlice = createSlice({
 //selectors
 export const selectQueryInput = (state) => state.searchBar.queryInput;
 export const selectQueryResults = (state) => state.searchBar.queryResults;
+export const selectSearchBarValue = (state) => state.searchBar.value;
 
 //actions
 export const { setQueryInput, setEmptyValue, setSearchBarValue } =

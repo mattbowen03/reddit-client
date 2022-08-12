@@ -16,6 +16,10 @@ input[type=text]:focus {
   border: 3px solid #84D98A;
 }
 
+input[type=submit] {
+  display: none;
+}
+
 .searchBar-wrapper {
   width: 100%;
 }

@@ -58,21 +58,21 @@ function Comments() {
   if (queryInput) {
     filteredList = commentsList.filter((item) => {
       return (
-        item.data.body.toLowerCase().includes(queryInput) ||
-        item.data.author.toLowerCase().includes(queryInput)
+        item.data?.body.toLowerCase().includes(queryInput) ||
+        item.data?.author.toLowerCase().includes(queryInput)
       );
     });
   }
 
   //Filters postList array with selected post's id
   let originalPost = postsList.filter((item) => {
-    if (item.data.id === originalPostID) {
+    if (item.data?.id === originalPostID) {
       return item.data;
     }
     return null;
   });
 
-  let myDate = new Date(originalPost[0].data.created * 1000);
+  let myDate = new Date(originalPost[0]?.data?.created * 1000);
 
   return (
     <div className='post-comments-container'>
@@ -81,7 +81,7 @@ function Comments() {
           <div className='upvote'>
             <img src={upArrow} className='upArrow' alt='up-arrow' />
           </div>
-          <div className='vote-number'>{originalPost[0].data.score}</div>
+          <div className='vote-number'>{originalPost[0]?.data?.score}</div>
           <img src={dnArrow} className='dnArrow' alt='down-arrow' />
           <div className='downVote'></div>
         </div>
@@ -95,17 +95,17 @@ function Comments() {
             }}
             className='commentsBtn'>
             <img src={backArrow} alt=''></img>
-            r/{postsList[0].data.subreddit}
+            r/{postsList[0]?.data?.subreddit}
           </button>
           <h3>
             {"Posted by: " +
-              originalPost[0].data.author +
+              originalPost[0]?.data?.author +
               " on " +
               myDate.toLocaleDateString()}
           </h3>
-          <h2>{originalPost[0].data.title}</h2>
-          <ReactMarkdown>{originalPost[0].data.selftext}</ReactMarkdown>
-          <img src={originalPost[0].data.url} alt=''></img>
+          <h2>{originalPost[0]?.data?.title}</h2>
+          <ReactMarkdown>{originalPost[0]?.data?.selftext}</ReactMarkdown>
+          <img src={originalPost[0]?.data?.url} alt=''></img>
         </div>
       </div>
 
@@ -117,13 +117,13 @@ function Comments() {
                 <div className='upvote'>
                   <img src={upArrow} className='upArrow' alt='up-arrow' />
                 </div>
-                <div className='vote-number'>{item.data.score}</div>
+                <div className='vote-number'>{item.data?.score}</div>
                 <img src={dnArrow} className='dnArrow' alt='down-arrow' />
                 <div className='downVote'></div>
               </div>
               <div className='comment-right'>
-                <ReactMarkdown>{item.data.body}</ReactMarkdown>
-                <p>{item.data.author}</p>
+                <ReactMarkdown>{item.data?.body}</ReactMarkdown>
+                <p>{item.data?.author}</p>
               </div>
             </div>
           );

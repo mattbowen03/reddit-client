@@ -42,7 +42,7 @@ export const postsSlice = createSlice({
     [fetchPostsAsync.fulfilled]: (state, action) => {
       state.value = action.payload;
       state.status = "fulfilled";
-      state.currentSubreddit = action.payload[0].data.subreddit;
+      state.currentSubreddit = action.payload[0]?.data?.subreddit;
     },
     [fetchPostsAsync.rejected]: (state) => {
       state.value = "rejected";

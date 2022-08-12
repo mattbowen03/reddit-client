@@ -23,7 +23,7 @@ function QueryResults() {
   return (
     <div className='queryResults-wrapper'>
       <h3>
-        Results for "{queryInput}" in {"r/" + subreddit[0].data.subreddit}:
+        Results for "{queryInput}" in {"r/" + subreddit[0]?.data?.subreddit}:
       </h3>
       <button onClick={() => dispatch(setEmptyQueryInput())}>
         Clear Search

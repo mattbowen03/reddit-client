@@ -1,1 +1,0 @@
-you left off... you need to fix the toggling of visibility in states for comments and posts. double check your imports and exports thatyou did it right. good job!

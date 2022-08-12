@@ -17,6 +17,8 @@ import dnArrow from "../../icons/bx-down-arrow-alt.svg";
 import commentIcon from "../../icons/bx-comment-detail.svg";
 import { selectQueryInput } from "../searchBar/searchBarSlice";
 import ReactMarkdown from "react-markdown";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 function Posts() {
   const postsList = useSelector(selectPosts);
@@ -30,7 +32,19 @@ function Posts() {
   }
 
   if (postsList === "Loading") {
-    return <div>Loading...</div>;
+    return (
+      <div className='post-skeleton'>
+        <h1>
+          <Skeleton count={1} />
+        </h1>
+        <p>
+          <Skeleton count={5} />
+        </p>
+        <p>
+          <Skeleton count={5} />
+        </p>
+      </div>
+    );
   }
 
   if (postsStatus === "rejected") {

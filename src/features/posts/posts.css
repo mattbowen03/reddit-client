@@ -44,6 +44,14 @@
   overflow: hidden;
 }
 
+.post-skeleton {
+  background-color: white;
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 4px;
+
+}
+
 .upArrow,
 .dnArrow {
   height: 30px;

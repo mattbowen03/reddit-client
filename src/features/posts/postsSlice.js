@@ -33,9 +33,6 @@ export const postsSlice = createSlice({
         ? (state.visibility = "SHOW")
         : (state.visibility = "HIDDEN");
     },
-    setPostsStatusRejected: (state) => {
-      state.status = "rejected";
-    },
   },
   extraReducers: {
     [fetchPostsAsync.pending]: (state, action) => {
@@ -69,11 +66,7 @@ export const selectoriginalPostID = (state) => state.posts.originalPostID;
 export const selectCurrentSubreddit = (state) => state.posts.currentSubreddit;
 
 //actions
-export const {
-  seePosts,
-  togglePostsVisibility,
-  setOriginalPostID,
-  setPostsStatusRejected,
-} = postsSlice.actions;
+export const { seePosts, togglePostsVisibility, setOriginalPostID } =
+  postsSlice.actions;
 
 export default postsSlice.reducer;

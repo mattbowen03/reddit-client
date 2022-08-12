@@ -18,8 +18,10 @@ function SearchBar() {
 
   if (postsList === "Loading") {
     return (
-      <div>
-        <input type='text' placeholder={"Search r/"}></input>
+      <div className='searchBar-wrapper'>
+        <form>
+          <input type='text' placeholder='Search r/'></input>
+        </form>
       </div>
     );
   }

@@ -17,10 +17,12 @@ import {
 } from "../posts/postsSlice";
 import ReactMarkdown from "react-markdown";
 import backArrow from "../../icons/bx-arrow-back.svg";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 function Comments() {
   const commentsList = useSelector(selectComments);
-  const status = useSelector(selectCommentsStatus);
+  const commentsStatus = useSelector(selectCommentsStatus);
   const visibility = useSelector(selectCommentsVisibility);
   const queryInput = useSelector(selectQueryInput);
   const originalPostID = useSelector(selectoriginalPostID);
@@ -31,12 +33,24 @@ function Comments() {
     return;
   }
 
-  if (status === "idle" || status === "pending") {
-    return <div>Loading...</div>;
+  if (commentsStatus === "idle" || commentsStatus === "loading") {
+    return (
+      <div className='comment-skeleton'>
+        <h1>
+          <Skeleton count={1} />
+        </h1>
+        <p>
+          <Skeleton count={5} />
+        </p>
+        <p>
+          <Skeleton count={5} />
+        </p>
+      </div>
+    );
   }
 
-  if (status === "failed") {
-    return <div>Failed to load.</div>;
+  if (commentsStatus === "rejected") {
+    return;
   }
 
   let filteredList = commentsList;

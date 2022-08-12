@@ -29,15 +29,18 @@ export const commentsSlice = createSlice({
     },
   },
   extraReducers: {
-    [fetchCommentsAsync.pending]: (state) => {
+    [fetchCommentsAsync.pending]: (state, action) => {
+      console.log("Payload pending:", action.payload);
       state.value = "pending";
-      state.status = "pending";
+      state.status = "loading";
     },
     [fetchCommentsAsync.fulfilled]: (state, action) => {
+      console.log("actionPayload fulfilled:", action.payload);
       state.value = action.payload;
       state.status = "fulfilled";
     },
-    [fetchCommentsAsync.rejected]: (state) => {
+    [fetchCommentsAsync.rejected]: (state, action) => {
+      console.log("actionPayload rejected:", action.payload);
       state.value = "rejected";
       state.status = "rejected";
     },

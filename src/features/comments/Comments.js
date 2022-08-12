@@ -53,22 +53,6 @@ function Comments() {
     );
   }
 
-  if (commentsStatus === "rejected") {
-    return (
-      <div className='comment-skeleton'>
-        <h1>
-          <Skeleton count={1} />
-        </h1>
-        <p>
-          <Skeleton count={5} />
-        </p>
-        <p>
-          <Skeleton count={5} />
-        </p>
-      </div>
-    );
-  }
-
   let filteredList = commentsList;
 
   if (queryInput) {

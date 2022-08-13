@@ -97,13 +97,13 @@ function Comments() {
             <img src={backArrow} alt=''></img>
             r/{postsList[0]?.data?.subreddit}
           </button>
-          <h3>
+          <div className='post-byline'>
             {"Posted by: " +
               originalPost[0]?.data?.author +
               " on " +
-              myDate.toLocaleDateString()}
-          </h3>
-          <h2>{originalPost[0]?.data?.title}</h2>
+              myDate.toLocaleString()}
+          </div>
+          <h1>{originalPost[0]?.data?.title}</h1>
           <ReactMarkdown>{originalPost[0]?.data?.selftext}</ReactMarkdown>
           <img src={originalPost[0]?.data?.url} alt=''></img>
         </div>
@@ -111,6 +111,7 @@ function Comments() {
 
       <div className='comments'>
         {filteredList.map((item, idx) => {
+          myDate = new Date(item.data?.created * 1000);
           return (
             <div className='comment-wrapper' key={idx}>
               <div className='comment-left'>
@@ -122,8 +123,13 @@ function Comments() {
                 <div className='downVote'></div>
               </div>
               <div className='comment-right'>
+                <p className='post-byline'>
+                  {"Posted by: " +
+                    originalPost[0]?.data?.author +
+                    " on " +
+                    myDate.toLocaleString()}
+                </p>
                 <ReactMarkdown>{item.data?.body}</ReactMarkdown>
-                <p>{item.data?.author}</p>
               </div>
             </div>
           );

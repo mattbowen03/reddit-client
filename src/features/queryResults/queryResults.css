@@ -1,8 +1,16 @@
-.queryResults-wrapper h3 {
+.queryResults-wrapper {
   display: inline;
+}
+
+.queryResults-header {
+  margin: auto;
 }
 
 .queryResults-wrapper button {
   padding: 2px 4px;
   height: auto;
+}
+
+.clearQueryBtn {
+  padding: 8px;
 }

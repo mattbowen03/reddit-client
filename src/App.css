@@ -63,6 +63,7 @@ nav {
 
 .nav-left {
   justify-content: flex-start;
+  align-items: center;
   margin: 0;
 }
 

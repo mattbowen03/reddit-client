@@ -31,7 +31,7 @@ function App() {
       <header className='app-header'>
         <nav>
           <h1 className='nav-left logo'>
-            <a href='/'>Matt's Reddits.</a>
+            <a href='/'>Ryan's Reddits.</a>
           </h1>
           <div className='nav-center'>
             <SearchBar />

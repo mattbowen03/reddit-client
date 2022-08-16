@@ -1,5 +1,6 @@
 .queryResults-wrapper {
-  display: inline;
+  display: block;
+  margin-top: 20px;
 }
 
 .queryResults-header {

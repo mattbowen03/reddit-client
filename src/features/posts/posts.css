@@ -72,7 +72,7 @@
   width: 100%;
   background-image: linear-gradient(to bottom, transparent, white);
   position: absolute;
-  bottom: 55px;
+  bottom: 50px;
   right: 0;
 }
 
@@ -152,5 +152,9 @@
 
   .votes-icon-container {
     display: flex;
+  }
+
+  .votes-icon-container img {
+    filter: invert(55%) sepia(7%) saturate(185%) hue-rotate(155deg) brightness(86%) contrast(86%);
   }
 }

@@ -109,7 +109,7 @@ function Posts() {
                       : "Comment"}
                   </span>
                 </div>
-                <div className='votes-icon-container'>
+                <div className='votes-icon-container post-footer'>
                   <img src={upArrow} alt='' />
                   <span>{item.data?.score}</span>
                   <img src={dnArrow} alt='' />

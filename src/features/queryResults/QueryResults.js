@@ -22,10 +22,12 @@ function QueryResults() {
 
   return (
     <div className='queryResults-wrapper'>
-      <h3>
+      <span className='queryResults-header'>
         Results for "{queryInput}" in {"r/" + subreddit[0]?.data?.subreddit}:
-      </h3>
-      <button onClick={() => dispatch(setEmptyQueryInput())}>
+      </span>
+      <button
+        className='clearQueryBtn'
+        onClick={() => dispatch(setEmptyQueryInput())}>
         Clear Search
       </button>
     </div>

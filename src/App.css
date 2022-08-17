@@ -2,25 +2,14 @@
 
 /* Base Styles */
 h1 {
-  font-size: 26px;
+  font-size: 20px;
   text-align: left;
   color: #262626;
-}
-
-h2 {
-  font-size: 22px;
-  text-align: left;
-  color: #262626;
-}
-
-h3 {
-  font-size: 18px;
-  text-align: left;
-  color: #262626;
+  line-height: 24px;
 }
 
 p {
-  font-size: 16px;
+  font-size: 14px;
   text-align: left;
   color: #262626;
 }
@@ -74,6 +63,7 @@ nav {
 
 .nav-left {
   justify-content: flex-start;
+  align-items: center;
   margin: 0;
 }
 

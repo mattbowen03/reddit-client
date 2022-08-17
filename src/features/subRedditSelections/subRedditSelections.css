@@ -33,7 +33,7 @@
   cursor: pointer;
 }
 
-.selections-wrapper h3 {
+.selections-title {
   text-transform: uppercase;
   font-weight: 300;
   color: #262626;
@@ -53,7 +53,7 @@
     border-radius: 0;
   }
 
-  .selections-wrapper h3 {
+  .selections-title {
     height: 70px;
     border-bottom: 1px solid #262626;
   }

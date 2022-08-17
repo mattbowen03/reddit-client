@@ -25,7 +25,7 @@ function SubRedditSelections() {
 
   return (
     <div className='selections-wrapper'>
-      <h3>My subReddits</h3>
+      <div className='selections-title'>My subReddits</div>
       <div className='hamburger-searchBar'>
         <SearchBar />
       </div>

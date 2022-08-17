@@ -88,10 +88,10 @@ function Posts() {
             </div>
             <div className='post-right'>
               <div className='post-wrap'>
-                <h3>
+                <div className='post-byline'>
                   Posted by {item.data?.author} on {myDate.toLocaleString()}
-                </h3>
-                <h2>{item.data?.title}</h2>
+                </div>
+                <h1 className='post-title'>{item.data?.title}</h1>
                 <div className='post-text'>
                   <ReactMarkdown>{item.data?.selftext}</ReactMarkdown>
                 </div>
@@ -101,7 +101,13 @@ function Posts() {
               <div className='bottom-post-icons'>
                 <div className='comments-icon-container'>
                   <img className='commentIcon' src={commentIcon} alt=''></img>
-                  <span>{item.data?.num_comments} Comments</span>
+                  <span className='post-footer'>
+                    {item.data?.num_comments}{" "}
+                    {item.data?.num_comments > 1 ||
+                    item.data?.num_comments === 0
+                      ? "Comments"
+                      : "Comment"}
+                  </span>
                 </div>
                 <div className='votes-icon-container'>
                   <img src={upArrow} alt='' />

@@ -156,7 +156,5 @@
 
   .votes-icon-container img {
     filter: invert(55%) sepia(7%) saturate(185%) hue-rotate(155deg) brightness(86%) contrast(86%);
-    height: 20px;
-    width: 20px;
   }
 }

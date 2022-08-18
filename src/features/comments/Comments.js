@@ -58,8 +58,8 @@ function Comments() {
   if (queryInput) {
     filteredList = commentsList.filter((item) => {
       return (
-        item.data?.body.toLowerCase().includes(queryInput) ||
-        item.data?.author.toLowerCase().includes(queryInput)
+        item.data?.body.toLowerCase().includes(queryInput.toLowerCase()) ||
+        item.data?.author.toLowerCase().includes(queryInput.toLowerCase())
       );
     });
   }

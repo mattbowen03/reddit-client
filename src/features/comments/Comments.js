@@ -95,7 +95,7 @@ function Comments() {
             }}
             className='commentsBtn'>
             <img src={backArrow} alt=''></img>
-            r/{postsList[0]?.data?.subreddit}
+            r/{postsList[0]?.data?.subreddit}/posts
           </button>
           <div className='post-byline'>
             {"Posted by: " +
@@ -106,6 +106,11 @@ function Comments() {
           <h1>{originalPost[0]?.data?.title}</h1>
           <ReactMarkdown>{originalPost[0]?.data?.selftext}</ReactMarkdown>
           <img src={originalPost[0]?.data?.url} alt=''></img>
+          <div className='votes-icon-container post-footer'>
+            <img src={upArrow} alt='' />
+            <span>{originalPost[0].data?.score}</span>
+            <img src={dnArrow} alt='' />
+          </div>
         </div>
       </div>
 
@@ -125,11 +130,16 @@ function Comments() {
               <div className='comment-right'>
                 <p className='post-byline'>
                   {"Posted by: " +
-                    originalPost[0]?.data?.author +
+                    item?.data?.author +
                     " on " +
                     myDate.toLocaleString()}
                 </p>
                 <ReactMarkdown>{item.data?.body}</ReactMarkdown>
+                <div className='votes-icon-container post-footer'>
+                  <img src={upArrow} alt='' />
+                  <span>{item.data?.score}</span>
+                  <img src={dnArrow} alt='' />
+                </div>
               </div>
             </div>
           );

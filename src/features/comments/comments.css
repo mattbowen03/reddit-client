@@ -87,3 +87,19 @@
   margin: 0;
   margin-right: 7px;
 }
+
+@media screen and (max-width: 425px) {
+  .comment-left {
+    display: none;
+  }
+  .votes-icon-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .votes-icon-container img {
+    height: 20px;
+    width: 20px;
+    margin: 0;
+  }
+}

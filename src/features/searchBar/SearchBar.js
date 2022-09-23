@@ -20,7 +20,10 @@ function SearchBar() {
     return (
       <div className='searchBar-wrapper'>
         <form>
-          <input type='text' placeholder='Search r/'></input>
+          <input
+            type='text'
+            placeholder='Search r/'
+            value={searchBarValue}></input>
         </form>
       </div>
     );
